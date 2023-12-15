@@ -26,7 +26,7 @@ def generate_markdown_table(members):
         markdown_link = create_markdown_link(member['github'], user_data)
         avatar_link = create_avatar_link(user_data)
         invited_person_link = f"[{member['invited_person']}](https://github.com/{member['invited_person']})"
-        invitation_count = sum(inv != "null" for inv in [member['invited_by_1'], member['invited_by_2'], member['invited_by_3']])
+        invitation_count = sum(inv != None for inv in [member['invited_by_1'], member['invited_by_2'], member['invited_by_3']])
 
         markdown_table += f"| {index} | {markdown_link} | {avatar_link} | {invited_person_link} | {member['invited_by_1']} | {member['invited_by_2']} | {member['invited_by_3']} | {invitation_count} |\n"
 
