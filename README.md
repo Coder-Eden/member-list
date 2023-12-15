@@ -1,4 +1,10 @@
-# member list
+## 概要
+![image](https://github.com/Coder-Eden/.github-private/assets/83957178/50505e63-2fba-4733-b825-b9b7e3615ad0)
+
+
+#### CODE EDENは25卒限定の「完全招待制」のオンラインコミュニティです。
+
+### 参加メンバー
 
 以下の表は、招待された人、ユーザーのGitHubプロフィール、何人目に招待されたか、および各ユーザーによって招待された人のリストを示しています。
 
