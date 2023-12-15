@@ -17,11 +17,11 @@ type GitHubUser struct {
 
 // Member はメンバー情報を格納する構造体です。
 type Member struct {
-	GitHub        string
-	InvitedPerson string
-	InvitedBy1    string
-	InvitedBy2    string
-	InvitedBy3    string
+	GitHub        string `json:"github"`
+	InvitedPerson string `json:"invited_person"`
+	InvitedBy1    string `json:"invited_by_1"`
+	InvitedBy2    string `json:"invited_by_2"`
+	InvitedBy3    string `json:"invited_by_3"`
 }
 
 // getGitHubUserInfo は GitHub API を使用してユーザー情報を取得します。
@@ -34,7 +34,7 @@ func getGitHubUserInfo(username string) (*GitHubUser, error) {
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		return nil, fmt.Errorf("status code: %d", resp.StatusCode)
+		return nil, nil
 	}
 
 	var user GitHubUser
@@ -48,6 +48,9 @@ func getGitHubUserInfo(username string) (*GitHubUser, error) {
 
 // createMarkdownLink は Markdown 形式のリンクを生成します。
 func createMarkdownLink(user *GitHubUser) string {
+	if user == nil {
+		return ""
+	}
 	name := user.Name
 	if name == "" {
 		name = user.Login
@@ -68,10 +71,12 @@ func createMarkdownTable(members []Member) (string, error) {
 
 	for i, member := range members {
 		user, err := getGitHubUserInfo(member.GitHub)
+		invitedPerson, err := getGitHubUserInfo(member.InvitedPerson)
 		if err != nil {
 			return "", err
 		}
-		markdownLink := createMarkdownLink(user)
+		userGitHubLink := createMarkdownLink(user)
+		invitedPersonGitHubLink := createMarkdownLink(invitedPerson)
 		avatarLink := createAvatarLink(user)
 		invitationCount := 0
 		for _, invite := range []string{member.InvitedBy1, member.InvitedBy2, member.InvitedBy3} {
@@ -80,8 +85,8 @@ func createMarkdownTable(members []Member) (string, error) {
 			}
 		}
 
-		builder.WriteString(fmt.Sprintf("| %d | %s | %s | [%s](https://github.com/%s) | %s | %s | %s | %d |\n",
-			i+1, markdownLink, avatarLink, member.InvitedPerson, member.InvitedPerson,
+		builder.WriteString(fmt.Sprintf("| %d | %s | %s | %s | %s | %s | %s | %d |\n",
+			i+1, userGitHubLink, avatarLink, invitedPersonGitHubLink,
 			member.InvitedBy1, member.InvitedBy2, member.InvitedBy3, invitationCount))
 	}
 
@@ -108,8 +113,8 @@ func main() {
 
 	markdown := "## 概要\n\n![image](https://github.com/Coder-Eden/.github-private/assets/83957178/50505e63-2fba-4733-b825-b9b7e3615ad0)\n\n" +
 		"#### CODE EDENは25卒限定の「完全招待制」のオンラインコミュニティです。\n\n" +
-		"### 参加メンバー\n\n" + 
-		"以下の表は、招待された人、ユーザーのGitHubプロフィール、何人目に招待されたか、および各ユーザーによって招待された人のリストを示しています。\n\n" + 
+		"### 参加メンバー\n\n" +
+		"以下の表は、招待された人、ユーザーのGitHubプロフィール、何人目に招待されたか、および各ユーザーによって招待された人のリストを示しています。\n\n" +
 		markdownTable
 
 	// 結果を Markdown ファイルに書き出す
