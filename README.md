@@ -1,6 +1,6 @@
 ## 概要
 
-![image](https://github.com/Coder-Eden/.github-private/assets/83957178/50505e63-2fba-4733-b825-b9b7e3615ad0)
+![image](https://imgur.com/26Brrc6)
 
 #### CODE EDENは25卒限定の「完全招待制」のオンラインコミュニティです。
 
