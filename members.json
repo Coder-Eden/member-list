@@ -1,0 +1,45 @@
+[
+    {
+        "invited_person": null,
+        "github": "ryota108",
+        "order": 1,
+        "invited_by_1": null,
+        "invited_by_2": null,
+        "invited_by_3": null
+    },
+    {
+        "invited_person": null,
+        "github": "cocoide",
+        "invited_by_1": null,
+        "invited_by_2": null,
+        "invited_by_3": null
+    },
+    {
+        "invited_person": "ryota108",
+        "github": "keis8221",
+        "invited_by_1": null,
+        "invited_by_2": null,
+        "invited_by_3": null
+    },
+    {
+        "invited_person": "ryota108",
+        "github": "taikicoco",
+        "invited_by_1": null,
+        "invited_by_2": null,
+        "invited_by_3": null
+    },
+    {
+        "invited_person": "ryota108",
+        "github": "koki-algebra",
+        "invited_by_1": null,
+        "invited_by_2": null,
+        "invited_by_3": null
+    },
+    {
+        "invited_person": "ryota108",
+        "github": "kazuemon",
+        "invited_by_1": null,
+        "invited_by_2": null,
+        "invited_by_3": null
+    }
+]
