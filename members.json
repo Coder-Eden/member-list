@@ -7,7 +7,7 @@
         "invited_by_3": null
     },
     {
-        "invited_person": null,
+        "invited_person": "ryota108",
         "github": "cocoide",
         "invited_by_1": null,
         "invited_by_2": null,
@@ -40,5 +40,19 @@
         "invited_by_1": null,
         "invited_by_2": null,
         "invited_by_3": null
-    }
+    },
+    {
+        "invited_person": "ryota108",
+        "github": "arfes0e2b3c",
+        "invited_by_1": null,
+        "invited_by_2": null,
+        "invited_by_3": null
+    },
+    {
+        "invited_person": "ryota108",
+        "github": "Sora-210",
+        "invited_by_1": null,
+        "invited_by_2": null,
+        "invited_by_3": null
+    }    
 ]
