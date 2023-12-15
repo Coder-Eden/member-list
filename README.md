@@ -6,8 +6,10 @@
 
 ### 参加メンバー
 
+以下の表は、招待された人、ユーザーのGitHubプロフィール、何人目に招待されたか、および各ユーザーによって招待された人のリストを示しています。
+
 | Number | ユーザー（GitHub） | アバター | 招待された人 | 招待した人（1）| 招待した人（2）| 招待した人（3）| 招待数 |
-|-------|------------|------|------|----------------|----------------|----------------|------|
+|-------|------------------|--------|------------|----------------|----------------|----------------|------|
 | 1 | [ryota108](https://github.com/ryota108) | ![image](https://avatars.githubusercontent.com/u/83957178?v=4) | [None](https://github.com/None) | None | None | None | 3 |
 | 2 | [Kazuki](https://github.com/cocoide) | ![image](https://avatars.githubusercontent.com/u/113165849?v=4) | [None](https://github.com/None) | None | None | None | 3 |
 | 3 | [Kei Sugawara](https://github.com/keis8221) | ![image](https://avatars.githubusercontent.com/u/54695442?v=4) | [ryota108](https://github.com/ryota108) | None | None | None | 3 |
