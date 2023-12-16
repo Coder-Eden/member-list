@@ -6,7 +6,7 @@ on:
       - develop
 
 env:
-  GH_TOKEN: ${{ secrets.TAIKI_TOKEN }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   go-run:

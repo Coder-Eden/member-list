@@ -19,3 +19,7 @@
 | 6 | [かずえもん](https://github.com/kazuemon) | ![image](https://avatars.githubusercontent.com/u/12812934?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
 | 7 | [Yuki Yata](https://github.com/arfes0e2b3c) | ![image](https://avatars.githubusercontent.com/u/86275398?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
 | 8 | [Sora210](https://github.com/Sora-210) | ![image](https://avatars.githubusercontent.com/u/46365745?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
+| 9 | [Hiroki Yoshioka](https://github.com/YoshiYoshiPro) | ![image](https://avatars.githubusercontent.com/u/106864912?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
+| 10 | [pirotyyy](https://github.com/pirotyyy) | ![image](https://avatars.githubusercontent.com/u/112918420?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
+| 11 | [Seidy Ujiie](https://github.com/Seidy-u) | ![image](https://avatars.githubusercontent.com/u/85110663?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
+| 12 | [masaya-tn](https://github.com/masaya-tn) | ![image](https://avatars.githubusercontent.com/u/61619091?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
