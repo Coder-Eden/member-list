@@ -66,8 +66,8 @@ func createAvatarLink(user *GitHubUser) string {
 // createMarkdownTable はメンバーのリストから Markdown テーブルを生成します。
 func createMarkdownTable(members []Member) (string, error) {
 	var builder strings.Builder
-	builder.WriteString("| Number | ユーザー（GitHub） | アバター | 招待された人 | 招待した人（1）| 招待した人（2）| 招待した人（3）| 招待数 |\n")
-	builder.WriteString("|-------|------------------|--------|------------|----------------|----------------|----------------|------|\n")
+	builder.WriteString("| Number | ユーザー（GitHub） | アバター | 招待した人 | 招待数 |\n")
+	builder.WriteString("|-------|------------------|--------|------------|------|\n")
 
 	for i, member := range members {
 		user, err := getGitHubUserInfo(member.GitHub)
@@ -85,9 +85,8 @@ func createMarkdownTable(members []Member) (string, error) {
 			}
 		}
 
-		builder.WriteString(fmt.Sprintf("| %d | %s | %s | %s | %s | %s | %s | %d |\n",
-			i+1, userGitHubLink, avatarLink, invitedPersonGitHubLink,
-			member.InvitedBy1, member.InvitedBy2, member.InvitedBy3, invitationCount))
+		builder.WriteString(fmt.Sprintf("| %d | %s | %s | %s | %d |\n",
+			i+1, userGitHubLink, avatarLink, invitedPersonGitHubLink, invitationCount))
 	}
 
 	return builder.String(), nil
