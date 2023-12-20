@@ -1,7 +1,6 @@
 ## 概要
 
-![image](https://github.com/Coder-Eden/member-list/assets/83957178/6fa04910-2e76-438b-83ca-737cfc9d1423)
-
+![image](https://github.com/Coder-Eden/.github-private/assets/83957178/50505e63-2fba-4733-b825-b9b7e3615ad0)
 
 #### CODE EDENは25卒限定の「完全招待制」のオンラインコミュニティです。
 
@@ -23,3 +22,4 @@
 | 10 | [pirotyyy](https://github.com/pirotyyy) | ![image](https://avatars.githubusercontent.com/u/112918420?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
 | 11 | [Seidy Ujiie](https://github.com/Seidy-u) | ![image](https://avatars.githubusercontent.com/u/85110663?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
 | 12 | [masaya-tn](https://github.com/masaya-tn) | ![image](https://avatars.githubusercontent.com/u/61619091?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
+| 13 | [Yoshimi-I](https://github.com/yoshimi-I) | ![image](https://avatars.githubusercontent.com/u/89241539?v=4) | [ryota108](https://github.com/ryota108) |  |  |  | 0 |
