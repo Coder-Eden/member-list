@@ -52,5 +52,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: create release pr      
-        run: gh pr create --base main --title "Auto Create Pull Request :rocket:" --body "auto create pr" --repo ${{ github.repository }}
+      - name: create pull request
+        run: gh pr create --base main --title "Auto Create Pull Request :rocket:" --body "auto create pull request" --repo ${{ github.repository }}

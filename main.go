@@ -30,7 +30,6 @@ func getGitHubUserInfo(username string) (*GitHubUser, error) {
 		return nil, fmt.Errorf("GitHub token is not set")
 	}
 
-	// http.NewRequestを使ってリクエストを作成
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return nil, err
