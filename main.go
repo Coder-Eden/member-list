@@ -5,39 +5,50 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strings"
 )
 
-// GitHubUser は GitHub ユーザー情報を格納する構造体です。
 type GitHubUser struct {
 	Login     string `json:"login"`
 	Name      string `json:"name"`
 	AvatarURL string `json:"avatar_url"`
 }
 
-// Member はメンバー情報を格納する構造体です。
 type Member struct {
-	GitHub        string `json:"github"`
-	InvitedPerson string `json:"invited_person"`
-	InvitedBy1    string `json:"invited_by_1"`
-	InvitedBy2    string `json:"invited_by_2"`
-	InvitedBy3    string `json:"invited_by_3"`
+	Host   string   `json:"host"`
+	GitHub string   `json:"github"`
+	Guests []string `json:"guests"`
 }
 
-// getGitHubUserInfo は GitHub API を使用してユーザー情報を取得します。
 func getGitHubUserInfo(username string) (*GitHubUser, error) {
+	user := GitHubUser{Login: username}
 	url := fmt.Sprintf("https://api.github.com/users/%s", username)
-	resp, err := http.Get(url)
+
+	token := os.Getenv("GITHUB_TOKEN")
+	if token == "" {
+		return nil, fmt.Errorf("GitHub token is not set")
+	}
+
+	// http.NewRequestを使ってリクエストを作成
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Authorization", "token "+token)
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		return nil, nil
+		return &user, nil
 	}
 
-	var user GitHubUser
 	err = json.NewDecoder(resp.Body).Decode(&user)
 	if err != nil {
 		return nil, err
@@ -46,7 +57,6 @@ func getGitHubUserInfo(username string) (*GitHubUser, error) {
 	return &user, nil
 }
 
-// createMarkdownLink は Markdown 形式のリンクを生成します。
 func createMarkdownLink(user *GitHubUser) string {
 	if user == nil {
 		return ""
@@ -58,43 +68,43 @@ func createMarkdownLink(user *GitHubUser) string {
 	return fmt.Sprintf("[%s](https://github.com/%s)", name, user.Login)
 }
 
-// createAvatarLink はアバターの画像リンクを生成します。
 func createAvatarLink(user *GitHubUser) string {
 	return fmt.Sprintf("![image](%s)", user.AvatarURL)
 }
 
-// createMarkdownTable はメンバーのリストから Markdown テーブルを生成します。
 func createMarkdownTable(members []Member) (string, error) {
 	var builder strings.Builder
-	builder.WriteString("| Number | ユーザー（GitHub） | アバター | 招待された人 | 招待した人（1）| 招待した人（2）| 招待した人（3）| 招待数 |\n")
-	builder.WriteString("|-------|------------------|--------|------------|----------------|----------------|----------------|------|\n")
+	builder.WriteString("| Number | ユーザー（GitHub） | アバター | 招待された人 | 招待数 | nil  | nil | nil |\n")
+	builder.WriteString("| --- | --- | --- | --- | --- | --- | --- | --- |\n")
 
 	for i, member := range members {
 		user, err := getGitHubUserInfo(member.GitHub)
-		invitedPerson, err := getGitHubUserInfo(member.InvitedPerson)
+		Host, err := getGitHubUserInfo(member.Host)
 		if err != nil {
 			return "", err
 		}
 		userGitHubLink := createMarkdownLink(user)
-		invitedPersonGitHubLink := createMarkdownLink(invitedPerson)
+		HostGitHubLink := createMarkdownLink(Host)
 		avatarLink := createAvatarLink(user)
-		invitationCount := 0
-		for _, invite := range []string{member.InvitedBy1, member.InvitedBy2, member.InvitedBy3} {
-			if invite != "" {
-				invitationCount++
+		invitationCount := len(member.Guests)
+
+		invitedGuests := make([]string, 0, invitationCount)
+		for _, guestUsername := range member.Guests {
+			guest, err := getGitHubUserInfo(guestUsername)
+			if err != nil {
+				return "", err
 			}
+			invitedGuests = append(invitedGuests, createMarkdownLink(guest))
 		}
 
-		builder.WriteString(fmt.Sprintf("| %d | %s | %s | %s | %s | %s | %s | %d |\n",
-			i+1, userGitHubLink, avatarLink, invitedPersonGitHubLink,
-			member.InvitedBy1, member.InvitedBy2, member.InvitedBy3, invitationCount))
+		builder.WriteString(fmt.Sprintf("| %d | %s | %s | %s | %d | %s | %s | %s |\n",
+			i+1, userGitHubLink, avatarLink, HostGitHubLink, invitationCount, "", "", ""))
 	}
 
 	return builder.String(), nil
 }
 
 func main() {
-	// ファイルからメンバー情報を読み込む
 	data, err := ioutil.ReadFile("members.json")
 	if err != nil {
 		panic(err)
@@ -117,7 +127,6 @@ func main() {
 		"以下の表は、招待された人、ユーザーのGitHubプロフィール、何人目に招待されたか、および各ユーザーによって招待された人のリストを示しています。\n\n" +
 		markdownTable
 
-	// 結果を Markdown ファイルに書き出す
 	err = ioutil.WriteFile("README.md", []byte(markdown), 0644)
 	if err != nil {
 		panic(err)
