@@ -1,4 +1,4 @@
-name: create-pr
+name: create-pull-request
 
 on:
   push:
@@ -27,7 +27,9 @@ jobs:
           go-version: 1.21
 
       - name: go run
-        run: go run main.go
+        run: |
+          export GITHUB_TOKEN=${{ secrets.TAIKI_TOKEN }}
+          go run main.go
       
       - name: Check for changes
         id: git-diff
@@ -51,4 +53,4 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: create release pr      
-        run: gh pr create --base main --title "create pr" --body "auto create pr" --repo ${{ github.repository }}
+        run: gh pr create --base main --title "Auto Create Pull Request :rocket:" --body "auto create pr" --repo ${{ github.repository }}
