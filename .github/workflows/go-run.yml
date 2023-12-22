@@ -1,7 +1,7 @@
-name: create-pull-request
+name: test-go-run
 
 on:
-  push:
+  pull_request:
     branches:
       - develop
 
@@ -39,18 +39,5 @@ jobs:
       - name: commit-push
         if: steps.git-diff.outputs.changes == 'true'
         run: |
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add .
-          git commit -m 'auto commit'
-          git push
+          echo "check for changes true"
 
-  create-release-pr:
-    runs-on: ubuntu-latest
-    needs: go-run
-    if: needs.go-run.outputs.changes == 'true'
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: create release pr      
-        run: gh pr create --base main --title "Auto Create Pull Request :rocket:" --body "auto create pr" --repo ${{ github.repository }}
