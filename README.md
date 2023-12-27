@@ -10,7 +10,7 @@
 
 | Number | ユーザー（GitHub） | アバター | 招待された人 | 招待数 | nil  | nil | nil |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | [ryota108](https://github.com/ryota108) | ![image](https://avatars.githubusercontent.com/u/83957178?v=4) | [](https://github.com/) | 0 |  |  |  |
+| 1 | [ryota108](https://github.com/ryota108) | ![image](https://avatars.githubusercontent.com/u/83957178?v=4) | [](https://github.com/) | 12 |  |  |  |
 | 2 | [Kazuki](https://github.com/cocoide) | ![image](https://avatars.githubusercontent.com/u/113165849?v=4) | [ryota108](https://github.com/ryota108) | 0 |  |  |  |
 | 3 | [Kei Sugawara](https://github.com/keis8221) | ![image](https://avatars.githubusercontent.com/u/54695442?v=4) | [ryota108](https://github.com/ryota108) | 0 |  |  |  |
 | 4 | [Taiki Kawasaki ](https://github.com/taikicoco) | ![image](https://avatars.githubusercontent.com/u/80304118?v=4) | [ryota108](https://github.com/ryota108) | 0 |  |  |  |
@@ -23,3 +23,4 @@
 | 11 | [Seidy Ujiie](https://github.com/Seidy-u) | ![image](https://avatars.githubusercontent.com/u/85110663?v=4) | [ryota108](https://github.com/ryota108) | 0 |  |  |  |
 | 12 | [masaya-tn](https://github.com/masaya-tn) | ![image](https://avatars.githubusercontent.com/u/61619091?v=4) | [ryota108](https://github.com/ryota108) | 0 |  |  |  |
 | 13 | [Yoshimi-I](https://github.com/yoshimi-I) | ![image](https://avatars.githubusercontent.com/u/89241539?v=4) | [ryota108](https://github.com/ryota108) | 0 |  |  |  |
+| 14 | [manasan-iTL](https://github.com/manasan-iTL) | ![image](https://avatars.githubusercontent.com/u/52818097?v=4) | [](https://github.com/) | 0 |  |  |  |
