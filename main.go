@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"member-list/internal/memberloader"
 	"net/http"
 	"os"
 	"strings"
@@ -13,12 +14,6 @@ type GitHubUser struct {
 	Login     string `json:"login"`
 	Name      string `json:"name"`
 	AvatarURL string `json:"avatar_url"`
-}
-
-type Member struct {
-	Host   string   `json:"host"`
-	GitHub string   `json:"github"`
-	Guests []string `json:"guests"`
 }
 
 func getGitHubUserInfo(username string) (*GitHubUser, error) {
@@ -71,7 +66,7 @@ func createAvatarLink(user *GitHubUser) string {
 	return fmt.Sprintf("![image](%s)", user.AvatarURL)
 }
 
-func createMarkdownTable(members []Member) (string, error) {
+func createMarkdownTable(members []memberloader.Member) (string, error) {
 	var builder strings.Builder
 	builder.WriteString("| Number | ユーザー（GitHub） | アバター | 招待された人 | 招待数 | nil  | nil | nil |\n")
 	builder.WriteString("| --- | --- | --- | --- | --- | --- | --- | --- |\n")
@@ -104,17 +99,11 @@ func createMarkdownTable(members []Member) (string, error) {
 }
 
 func main() {
-	data, err := ioutil.ReadFile("members.json")
+	var members []memberloader.Member
+	members, err := memberloader.UpdateMemberList()
 	if err != nil {
 		panic(err)
 	}
-
-	var members []Member
-	err = json.Unmarshal(data, &members)
-	if err != nil {
-		panic(err)
-	}
-
 	markdownTable, err := createMarkdownTable(members)
 	if err != nil {
 		panic(err)
