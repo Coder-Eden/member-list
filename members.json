@@ -1,1 +1,33 @@
-[{"github":"ryota108","host":"","guests":["cocoide","keis8221","taikicoco","koki-algebra","kazuemon","arfes0e2b3c","Sora-210","YoshiYoshiPro","pirotyyy","Seidy-u","masaya-tn","yoshimi-I"]},{"github":"cocoide","host":"ryota108","guests":null},{"github":"keis8221","host":"ryota108","guests":null},{"github":"taikicoco","host":"ryota108","guests":null},{"github":"koki-algebra","host":"ryota108","guests":null},{"github":"kazuemon","host":"ryota108","guests":null},{"github":"arfes0e2b3c","host":"ryota108","guests":null},{"github":"Sora-210","host":"ryota108","guests":null},{"github":"YoshiYoshiPro","host":"ryota108","guests":null},{"github":"pirotyyy","host":"ryota108","guests":null},{"github":"Seidy-u","host":"ryota108","guests":null},{"github":"masaya-tn","host":"ryota108","guests":null},{"github":"yoshimi-I","host":"ryota108","guests":null},{"github":"manasan-iTL","host":"","guests":null}]
+[
+  {
+    "github": "ryota108",
+    "host": "",
+    "guests": [
+      "cocoide",
+      "keis8221",
+      "taikicoco",
+      "koki-algebra",
+      "kazuemon",
+      "arfes0e2b3c",
+      "Sora-210",
+      "YoshiYoshiPro",
+      "pirotyyy",
+      "Seidy-u",
+      "masaya-tn",
+      "yoshimi-I"
+    ]
+  },
+  { "github": "cocoide", "host": "ryota108", "guests": null },
+  { "github": "keis8221", "host": "ryota108", "guests": null },
+  { "github": "taikicoco", "host": "ryota108", "guests": null },
+  { "github": "koki-algebra", "host": "ryota108", "guests": null },
+  { "github": "kazuemon", "host": "ryota108", "guests": null },
+  { "github": "arfes0e2b3c", "host": "ryota108", "guests": null },
+  { "github": "Sora-210", "host": "ryota108", "guests": null },
+  { "github": "YoshiYoshiPro", "host": "ryota108", "guests": null },
+  { "github": "pirotyyy", "host": "ryota108", "guests": null },
+  { "github": "Seidy-u", "host": "ryota108", "guests": null },
+  { "github": "masaya-tn", "host": "ryota108", "guests": null },
+  { "github": "yoshimi-I", "host": "ryota108", "guests": null },
+  { "github": "manasan-iTL", "host": "", "guests": null }
+]
