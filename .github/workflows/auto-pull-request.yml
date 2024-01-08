@@ -1,4 +1,4 @@
-name: create-pull-request
+name: auto commit
 
 on:
   push:
@@ -10,14 +10,12 @@ permissions:
   packages: read
   pull-requests: write
 
-env:
-  GH_TOKEN: ${{ secrets.TAIKI_TOKEN }}
-
 jobs:
-  go-run:
+  build-and-format:
     runs-on: ubuntu-latest
     outputs:
-      changes: ${{ steps.git-diff.outputs.changes }}
+      changes: ${{ steps.diff.outputs.changes }}
+      count: ${{ steps.check-pr.outputs.count }}
     steps:
       - uses: actions/checkout@v3
 
@@ -30,27 +28,48 @@ jobs:
         run: |
           export GITHUB_TOKEN=${{ secrets.TAIKI_TOKEN }}
           go run main.go
-      
-      - name: Check for changes
-        id: git-diff
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Format JSON files
         run: |
-          git diff --quiet || echo "::set-output name=changes::true"
+          npm install --save-dev prettier
+          npx prettier --write '**/*.json'
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "changes=none" >> "$GITHUB_OUTPUT"
+          else
+            echo "changes=found" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: commit-push
-        if: steps.git-diff.outputs.changes == 'true'
+        if: ${{ steps.diff.outputs.changes == 'found' }}
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add .
           git commit -m 'auto commit'
           git push
+      
+      - name: check pr
+        id: check-pr
+        run: |
+          echo "count=$(gh pr list --state open --base main | wc -l)" >> "$GITHUB_OUTPUT"
 
-  create-release-pr:
+  create-pull-request:
     runs-on: ubuntu-latest
-    needs: go-run
-    if: needs.go-run.outputs.changes == 'true'
+    needs: build-and-format
+    if: needs.build-and-format.outputs.count == '0' && needs.build-and-format.outputs.changes == 'found'
+    env:
+      GH_TOKEN: ${{ secrets.TAIKI_TOKEN }}
     steps:
       - uses: actions/checkout@v3
 
-      - name: create pull request
+      - name: create pull request    
         run: gh pr create --base main --title "Auto Create Pull Request :rocket:" --body "auto create pull request" --repo ${{ github.repository }}
